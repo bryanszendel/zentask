@@ -23,10 +23,26 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      tasks: taskData
+      tasks: taskData,
+      toggleItem: null
     }
   }
   
+  toggleItem = id => {
+    this.setState({
+      tasks: this.state.tasks.map(item => {
+        if (item.id === id) {
+          return {
+            ...item,
+            completed: !item.completed
+          };
+        } else {
+          return item;
+        }
+      })
+    })
+  }
+
   addTask = taskName => {
     const newTask = {
       task: taskName,
@@ -38,12 +54,22 @@ class App extends React.Component {
     })
   }
 
+  clearCompleted = () => {
+    this.setState({
+      tasks: this.state.tasks.filter(item => !item.purchased)
+    })
+  }
+
   render() {
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
         <TodoForm addTask={this.addTask}/>
-        <TodoList tasks={this.state.tasks}/>
+        <TodoList 
+          tasks={this.state.tasks}
+          clearCompleted={this.clearCompleted}
+          toggleItem={this.toggleItem}
+        />
       </div>
     );
   }
