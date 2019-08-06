@@ -99,6 +99,7 @@ button {
 input::placeholder {
   color: #b57769;
   opacity: 1;
+  font-style: italic;
 }
 
 .clear-btn {
