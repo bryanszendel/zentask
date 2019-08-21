@@ -12,11 +12,6 @@ const taskData = [
     task: 'Bake Cookies',
     id: 1528817084358,
     completed: false
-  },
-  {
-    task: 'Mow Grass',
-    id: Date.now(),
-    completed: false
   }
 ];
 
